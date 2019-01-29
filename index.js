@@ -83,7 +83,7 @@ await frame.waitForSelector("#gridCheckBox", { visible : true });
 //const textBoxElement = await frame.$("#pyNote1");
 //await textBoxElement.type("Test");
 var  example = await frame.$$( "#gridCheckBox" );
-console.log("example", example);
+//console.log("example", example);
 
 await example[0].click();
 
@@ -112,10 +112,20 @@ frame = await page.frames().find(f => f.name() === 'PegaGadget1Ifr');
 
 await frame.waitForSelector("#Region", { visible : true });
 //example = await frame.$$( "#gridCheckBox" );
-frame.select('#Region', 'AMER'); 
-//console.log("example", example);
+await frame.select('#Region', 'AMER'); 
+await frame.waitForSelector('#Country');
+await frame.select('#Country', 'United States'); 
+await frame.waitForSelector('#State');
+await frame.select('#State', 'AZ'); 
+await frame.waitForSelector('#City');
+await frame.select('#City', 'Scottsdale');
+await frame.click('#IsWorkLocUnsure');
 
-//await example[0].click();
+frame.waitForXPath('//*[@id="RULE_KEY"]/div/div/div/div[2]/div/div/div/div[6]/div/div/div/div/span/a',{ visible : true }).then(async (dom)=>{
+  console.log("Inside Next Button");
+  await dom.click()
+}) 
+
 
 
 
