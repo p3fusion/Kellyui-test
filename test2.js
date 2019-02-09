@@ -1,11 +1,12 @@
 var vm = require("vm")
 var Mocha = require("mocha")
-
+const addContext = require('mochawesome/addContext');
 
 var config={
-  reporter: 'mochawesome-screenshots',   
+  reporter: 'mochawesome',   
   reporterOptions: {
-      targetDir : './reports'
+      reportDir : './reports',
+      cdn : true
   },
   timeout: 600000,
   ui:"bdd"
@@ -21,13 +22,14 @@ const { expect } = require('chai');
 const browser = await puppeteer.launch({headless: false, args: ['--window-size=1920,1080'], slowMo : 100});
 const page = await browser.newPage();
 
-pseudoFile(mocha, {assert:require("assert"), page:page, expect: expect},
+pseudoFile(mocha, {assert:require("assert"), page:page, expect: expect, addContext: addContext},
   `describe('dynamic tests',  function() {
     this.timeout(30000);
     it('Simple Chai Test', async function() {
       expect(true).to.be.true;
+      addContext(this, 'https://www.p3fusion.com/img/logo.png');
     })
-
+    
       it('Puppetter Test', async function() {
       await page.goto('https://klysvc-guided-dt1.pegacloud.net/prweb');
       const USERNAME_SELECTOR  = '#txtUserID'
@@ -158,6 +160,7 @@ pseudoFile(mocha, {assert:require("assert"), page:page, expect: expect},
     
     
     await page.screenshot({ path: 'example.png' })
+    await browser.close();
     })
   })`)
 mocha.run()

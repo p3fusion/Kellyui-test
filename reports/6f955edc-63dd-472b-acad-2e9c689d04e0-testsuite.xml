@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1549724221056' stop='1549724240772'>
+    <name>dynamic tests</name>
+    <title>dynamic tests</title>
+    <test-cases>
+        <test-case start='1549724221056' status='passed' stop='1549724221059'>
+            <name>Simple Chai Test</name>
+            <title>Simple Chai Test</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1549724221059' status='passed' stop='1549724240772'>
+            <name>Puppetter Test</name>
+            <title>Puppetter Test</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

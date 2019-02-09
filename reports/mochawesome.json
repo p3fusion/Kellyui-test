@@ -1,0 +1,101 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2019-02-09T16:26:06.154Z",
+    "end": "2019-02-09T16:26:36.173Z",
+    "duration": 30019,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "danger",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "8159c125-11e5-4d0b-a960-e7cbb914c85d",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "55d9765f-94ff-4343-b472-bef06218eedd",
+        "title": "dynamic tests",
+        "fullFile": ":memory:",
+        "file": ":memory:",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [
+          {
+            "title": "Simple Chai Test",
+            "fullTitle": "dynamic tests Simple Chai Test",
+            "timedOut": false,
+            "duration": 2,
+            "state": "passed",
+            "speed": "fast",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "context": "\"https://www.p3fusion.com/img/logo.png\"",
+            "code": "expect(true).to.be.true;\naddContext(this, 'https://www.p3fusion.com/img/logo.png');",
+            "err": {},
+            "isRoot": false,
+            "uuid": "2a077814-3003-4b7d-b36f-48322877cccf",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "Puppetter Test",
+            "fullTitle": "dynamic tests Puppetter Test",
+            "timedOut": true,
+            "duration": 30004,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "await page.goto('https://klysvc-guided-dt1.pegacloud.net/prweb');\nconst USERNAME_SELECTOR  = '#txtUserID'\nconst PASSWORD_SELECTOR = '#txtPassword';\nconst BUTTON_SELECTOR =  '#sub'\nawait page.click(USERNAME_SELECTOR);\n    \nawait page.setViewport({\n  width  : 1920,\n  height : 1080\n});\n    await page.keyboard.type('tom');\n    \n    await page.click(PASSWORD_SELECTOR);\n    await page.keyboard.type('rules');\n    \n    await page.click(BUTTON_SELECTOR, {\"waitUntil\" : \"networkidle0\"});\n    //await page.waitFor(30000);\n    console.log('Now waiting for iFrame PegaGadget0Ifr');\n    await page.waitForSelector( \"#PegaGadget0Ifr\", { visible : true } );\n    \n    expect(await page.title()).to.eql('Guided Work Portal');\n    \n    \n    var frame = await page.frames().find(f => f.name() === 'PegaGadget0Ifr');\n    //const button = await frame.$('#txtCase');\n    //button.click();\n    \n    //#PegaGadget0Ifr\n    \n    console.log('Now waiting for Radio Button');\n    const radioButtonSelector = \"#HomePageResponseI\\20 need\\20 to\\20 buy\\20 or\\20 extend\\20 a\\20 new\\20 item\\2c \\20 temp\\2c \\20 contractor\\20 or\\20 service\";\n    /*await frame.waitForSelector(radioButtonSelector, { visible : true } ).then(async (dom) => {\nconsole.log(\"Inside DOM\");\nawait dom.click()\n    });*/\n    //console.log(\"Outside DOM\");\n    //await frame.click(radioButtonSelector);\n    \n    await frame.waitForXPath('//*[@id=\"RULE_KEY\"]/div/div/div/div[1]/div/div/div/div/div/div/div/div[3]/div/div[1]/span/label',  { visible : true }).then(async (dom)=>{\nconsole.log(\"Inside DOM\");\nawait dom.click()\n    }) \n    \n    console.log(\"Outside DOM\");\n    \n    console.log('Now waiting for iFrame PegaGadget1Ifr');\n    await page.waitForSelector( \"#PegaGadget1Ifr\", { visible : true } );\n    \n    \n    \n    var frame = await page.frames().find(f => f.name() === 'PegaGadget1Ifr');\n    \n    //await frame.waitForSelector(\"#PegaGadget1Ifr\",  { visible : true } );\n    //await page.waitFor(30000);\n    \n    //console.log('Now waiting for iFrame #PegaGadget1Ifr');\n    //console.log('Child Franes', frame.childFrames());\n    \n    //await frame.waitForXPath('//*[@id=\"$PD_GetNextQuestion$pResponses$l1\"]/td[2]/div/span/a',  { visible : true });\n    await frame.waitForSelector(\"#pyNote1\", { visible : true });\n    await frame.click(\"#pyNote1\");\n    const textBoxElement = await frame.$(\"#pyNote1\");\n    await textBoxElement.type(\"Test\");\n    \n    await frame.waitForXPath('//*[@id=\"$PD_GetNextQuestion$pResponses$l1\"]/td[2]/div/span/a',  { visible : true }).then(async (dom)=>{\nconsole.log(\"Inside Next Button\");\nawait dom.click()\n    }) \n    \n    \n    await page.waitForSelector( \"#PegaGadget1Ifr\", { visible : true } );\n    \n    \n    \n    var frame = await page.frames().find(f => f.name() === 'PegaGadget1Ifr');\n    \n    await frame.waitForSelector(\"#gridCheckBox\", { visible : true });\n    //await frame.click(\"$PD_GetNextQuestion$pResponses$l2$ppySelected\");\n    //const textBoxElement = await frame.$(\"#pyNote1\");\n    //await textBoxElement.type(\"Test\");\n    var  example = await frame.$$( \"#gridCheckBox\" );\n    //console.log(\"example\", example);\n    \n    await example[0].click();\n    \n    await page.waitForSelector( \"#PegaGadget1Ifr\", { visible : true } );\n    \n    \n    \n    frame = await page.frames().find(f => f.name() === 'PegaGadget1Ifr');\n    \n    await frame.waitForSelector(\"#gridCheckBox\", { visible : true });\n    //await frame.click(\"$PD_GetNextQuestion$pResponses$l2$ppySelected\");\n    //const textBoxElement = await frame.$(\"#pyNote1\");\n    //await textBoxElement.type(\"Test\");\n    example = await frame.$$( \"#gridCheckBox\" );\n    //console.log(\"example\", example);\n    \n    await example[0].click();\n    \n    \n    \n    await page.waitForSelector( \"#PegaGadget1Ifr\", { visible : true } );\n    \n    \n    \n    frame = await page.frames().find(f => f.name() === 'PegaGadget1Ifr');\n    \n    await frame.waitForSelector(\"#Region\", { visible : true });\n    //example = await frame.$$( \"#gridCheckBox\" );\n    await frame.select('#Region', 'AMER'); \n    await frame.waitForSelector('#Country');\n    await frame.select('#Country', 'United States'); \n    await frame.waitForSelector('#State');\n    await frame.select('#State', 'AZ'); \n    await frame.waitForSelector('#City');\n    await frame.select('#City', 'Scottsdale');\n    await frame.click('#IsWorkLocUnsure');\n    \n    frame.waitForXPath('//*[@id=\"RULE_KEY\"]/div/div/div/div[2]/div/div/div/div[6]/div/div/div/div/span/a',{ visible : true }).then(async (dom)=>{\nconsole.log(\"Inside Next Button\");\nawait dom.click()\n    }) \n    \n    \n    \n    \n    \n    await page.screenshot({ path: 'example.png' })\n    await browser.close();",
+            "err": {
+              "message": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves.",
+              "estack": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves."
+            },
+            "isRoot": false,
+            "uuid": "af5cbc44-f0f0-4cc5-bf19-5cd114a14dac",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "2a077814-3003-4b7d-b36f-48322877cccf"
+        ],
+        "failures": [
+          "af5cbc44-f0f0-4cc5-bf19-5cd114a14dac"
+        ],
+        "pending": [],
+        "skipped": [],
+        "duration": 30006,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 30000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 600000
+  },
+  "copyrightYear": 2019
+}
